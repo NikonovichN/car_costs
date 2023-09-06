@@ -5,10 +5,11 @@ import 'package:go_router/go_router.dart';
 class NavigationShellProvider extends InheritedWidget {
   final StatefulNavigationShell navigationShell;
 
-  const NavigationShellProvider(
-    this.navigationShell, {
+  const NavigationShellProvider({
     super.key,
-  }) : super(child: navigationShell);
+    required this.navigationShell,
+    required super.child,
+  });
 
   static NavigationShellProvider? maybeOf(BuildContext context) {
     return context

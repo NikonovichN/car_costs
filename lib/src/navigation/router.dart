@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
 import 'navigation_shell_provider.dart';
 import 'routes.dart';
+import 'global_scaffold.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
 
@@ -20,8 +21,12 @@ final routerProvider = Provider<GoRouter>(
       routes: [
         StatefulShellRoute.indexedStack(
           branches: branches,
-          builder: (context, goRouterState, navigationShell) =>
-              NavigationShellProvider(navigationShell),
+          builder: (context, goRouterState, navigationShell) {
+            return NavigationShellProvider(
+              navigationShell: navigationShell,
+              child: GlobalScaffold(body: navigationShell),
+            );
+          },
         ),
       ],
     );
