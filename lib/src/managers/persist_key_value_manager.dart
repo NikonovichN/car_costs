@@ -1,9 +1,9 @@
+import 'package:car_costs/src/config/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final persistKeyValueManagerProvider = Provider<PersistKeyValueManager>(
-  (ref) => PersistKeyValueManagerImpl(),
-);
+final persistKeyValueManagerProvider =
+    Provider<PersistKeyValueManager>(PersistKeyValueManagerImpl.new);
 
 abstract class PersistKeyValueManager {
   Future<void> setBool(String key, bool value);
@@ -12,80 +12,56 @@ abstract class PersistKeyValueManager {
   Future<void> setString(String key, String value);
   Future<void> setStringList(String key, List<String> value);
 
-  Future<bool?> readBool(String key);
-  Future<int?> readInt(String key);
-  Future<double?> readDouble(String key);
-  Future<String?> readString(String key);
-  Future<List<String>?> readStringList(String key);
+  bool? readBool(String key);
+  int? readInt(String key);
+  double? readDouble(String key);
+  String? readString(String key);
+  List<String>? readStringList(String key);
 }
 
 class PersistKeyValueManagerImpl implements PersistKeyValueManager {
-  SharedPreferences? _prefs;
+  final SharedPreferences _prefs;
 
-  Future<SharedPreferences> _getPrefsInstance() async {
-    if (_prefs == null) {
-      return await SharedPreferences.getInstance();
-    }
-    return _prefs!;
-  }
+  PersistKeyValueManagerImpl(Ref ref)
+      : _prefs = ref.read(sharedPreferencesProvider).asData!.value;
 
   @override
   Future<void> setBool(String key, bool value) async {
-    final prefs = await _getPrefsInstance();
-    prefs.setBool(key, value);
+    await _prefs.setBool(key, value);
   }
 
   @override
   Future<void> setInt(String key, int value) async {
-    final prefs = await _getPrefsInstance();
-    prefs.setInt(key, value);
+    await _prefs.setInt(key, value);
   }
 
   @override
   Future<void> setDouble(String key, double value) async {
-    final prefs = await _getPrefsInstance();
-    prefs.setDouble(key, value);
+    await _prefs.setDouble(key, value);
   }
 
   @override
   Future<void> setString(String key, String value) async {
-    final prefs = await _getPrefsInstance();
-    prefs.setString(key, value);
+    await _prefs.setString(key, value);
   }
 
   @override
   Future<void> setStringList(String key, List<String> value) async {
-    final prefs = await _getPrefsInstance();
-    prefs.setStringList(key, value);
+    await _prefs.setStringList(key, value);
   }
 
   @override
-  Future<bool?> readBool(String key) async {
-    final prefs = await _getPrefsInstance();
-    return prefs.getBool(key);
-  }
+  bool? readBool(String key) => _prefs.getBool(key);
 
   @override
-  Future<int?> readInt(String key) async {
-    final prefs = await _getPrefsInstance();
-    return prefs.getInt(key);
-  }
+  int? readInt(String key) => _prefs.getInt(key);
 
   @override
-  Future<double?> readDouble(String key) async {
-    final prefs = await _getPrefsInstance();
-    return prefs.getDouble(key);
-  }
+  double? readDouble(String key) => _prefs.getDouble(key);
 
   @override
-  Future<String?> readString(String key) async {
-    final prefs = await _getPrefsInstance();
-    return prefs.getString(key);
-  }
+  String? readString(String key) => _prefs.getString(key);
 
   @override
-  Future<List<String>?> readStringList(String key) async {
-    final prefs = await _getPrefsInstance();
-    return prefs.getStringList(key);
-  }
+  List<String>? readStringList(String key) => _prefs.getStringList(key);
 }
