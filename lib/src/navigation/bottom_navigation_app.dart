@@ -1,9 +1,11 @@
+import 'package:car_costs/src/config/providers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'constants.dart';
 import 'navigation_shell_provider.dart';
+import '../widgets/navigation.dart';
 
 ///
 /// This Widget should be used in tandem with [NavigationShellProvider]
@@ -14,30 +16,31 @@ class BottomNavigationApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final navigationShell = NavigationShellProvider.of(context).navigationShell;
+    final iconPaths = ref.read(iconPathsProvider);
     final routePaths = ref.read(routePathsProvider);
 
-    return BottomNavigationBar(
+    return BottomNavigationBarApp(
       currentIndex: navigationShell.currentIndex,
-      onTap: (int index) => navigationShell.goBranch(index),
+      onTap: navigationShell.goBranch,
       items: [
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.home),
+        BottomBarItemApp(
+          iconPath: iconPaths.homeSvg,
           label: routePaths.dashboard,
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.access_time_outlined),
+        BottomBarItemApp(
+          iconPath: iconPaths.activitiesSvg,
           label: routePaths.activities,
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.monetization_on_outlined),
+        BottomBarItemApp(
+          iconPath: iconPaths.currencySvg,
           label: routePaths.expenses,
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.settings),
+        BottomBarItemApp(
+          iconPath: iconPaths.settingsSvg,
           label: routePaths.settings,
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.garage_rounded),
+        BottomBarItemApp(
+          iconPath: iconPaths.garageSvg,
           label: routePaths.garage,
         ),
       ],

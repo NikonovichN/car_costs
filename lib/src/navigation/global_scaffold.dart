@@ -12,6 +12,7 @@ class GlobalScaffold extends StatelessWidget {
     return Scaffold(
       body: body,
       bottomNavigationBar: const BottomNavigationApp(),
+      backgroundColor: Theme.of(context).colorScheme.background,
     );
   }
 }
