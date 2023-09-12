@@ -1,17 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../domain/application_settings_entity.dart';
-import '../data/application_settings_repository.dart';
+import '../domain/dark_theme_entity.dart';
+import '../data/dark_theme_repository.dart';
 
-/// Provides possibility to read dark theme
+/// Provides possibility to read/set dark theme
 ///
 /// Use method [readValue()] to get value [bool]
 /// to check if dark theme is enabled
 final darkThemeControllerProvider =
-    ChangeNotifierProvider.autoDispose<DarkThemeController>(
-  DarkThemeController.new,
-);
+    ChangeNotifierProvider.autoDispose(DarkThemeController.new);
 
 class DarkThemeController extends ChangeNotifier {
   final DarkThemeRepository _darkThemeRepository;
