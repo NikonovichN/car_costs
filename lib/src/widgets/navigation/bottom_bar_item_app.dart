@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../utils/string_extensions.dart';
-
 class BottomBarItemApp extends StatelessWidget {
   final String iconPath;
   final String label;
@@ -27,7 +25,7 @@ class BottomBarItemApp extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5),
-        Text(label.firstLetterToUpperCase()),
+        Text(label),
       ],
     );
   }

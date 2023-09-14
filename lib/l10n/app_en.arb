@@ -1,5 +1,11 @@
 {
   "@@locale": "en",
   "dark_theme": "Dark Theme",
-  "language": "Language"
+  "language": "Language",
+  "navigationBarButtonCurrency": "Currency",
+  "navigationBarButtonExpenses": "Expenses",
+  "navigationBarButtonGarage": "Garage",
+  "navigationBarButtonHome": "Home",
+  "navigationBarButtonJournal": "Journal",
+  "navigationBarButtonSettings": "Settings"
 }

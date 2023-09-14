@@ -1,11 +1,11 @@
-import 'package:car_costs/src/config/providers.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'constants.dart';
 import 'navigation_shell_provider.dart';
 import '../widgets/navigation.dart';
+import '../config/providers.dart';
 
 ///
 /// This Widget should be used in tandem with [NavigationShellProvider]
@@ -17,7 +17,7 @@ class BottomNavigationApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final navigationShell = NavigationShellProvider.of(context).navigationShell;
     final iconPaths = ref.read(iconPathsProvider);
-    final routePaths = ref.read(routePathsProvider);
+    final localizations = AppLocalizations.of(context)!;
 
     return BottomNavigationBarApp(
       currentIndex: navigationShell.currentIndex,
@@ -25,23 +25,23 @@ class BottomNavigationApp extends ConsumerWidget {
       items: [
         BottomBarItemApp(
           iconPath: iconPaths.homeSvg,
-          label: routePaths.dashboard,
+          label: localizations.navigationBarButtonHome,
         ),
         BottomBarItemApp(
           iconPath: iconPaths.activitiesSvg,
-          label: routePaths.activities,
+          label: localizations.navigationBarButtonJournal,
         ),
         BottomBarItemApp(
           iconPath: iconPaths.currencySvg,
-          label: routePaths.expenses,
+          label: localizations.navigationBarButtonCurrency,
         ),
         BottomBarItemApp(
           iconPath: iconPaths.settingsSvg,
-          label: routePaths.settings,
+          label: localizations.navigationBarButtonSettings,
         ),
         BottomBarItemApp(
           iconPath: iconPaths.garageSvg,
-          label: routePaths.garage,
+          label: localizations.navigationBarButtonGarage,
         ),
       ],
     );
