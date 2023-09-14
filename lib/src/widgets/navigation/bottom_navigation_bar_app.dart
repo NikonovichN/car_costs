@@ -5,7 +5,7 @@ import 'bottom_bar_item_app.dart';
 import '../../theme/colors/colors_extensions.dart';
 
 class BottomNavigationBarApp extends StatelessWidget {
-  static const _animationDuration = Duration(milliseconds: 300);
+  static const _animationDuration = Duration(milliseconds: 150);
 
   final int currentIndex;
   final ValueChanged<int> onTap;

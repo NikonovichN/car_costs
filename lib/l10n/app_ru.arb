@@ -1,0 +1,11 @@
+{
+  "@@locale": "ru",
+  "dark_theme": "Темная тема",
+  "language": "Язык",
+  "navigationBarButtonCurrency": "Валюта",
+  "navigationBarButtonExpenses": "Расходы",
+  "navigationBarButtonGarage": "Гараж",
+  "navigationBarButtonHome": "Главная",
+  "navigationBarButtonJournal": "Журнал",
+  "navigationBarButtonSettings": "Настройки"
+}
