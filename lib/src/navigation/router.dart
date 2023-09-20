@@ -6,9 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
 import 'navigation_shell_provider.dart';
 import 'routes.dart';
-import 'global_scaffold.dart';
+import '../widgets/stacked_pages.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
+
+final routerKeyProvider = Provider((ref) => _navigatorKey);
 
 final routerProvider = Provider<GoRouter>(
   (ref) {
@@ -24,7 +26,7 @@ final routerProvider = Provider<GoRouter>(
           builder: (context, goRouterState, navigationShell) {
             return NavigationShellProvider(
               navigationShell: navigationShell,
-              child: GlobalScaffold(body: navigationShell),
+              child: StackedPages(content: navigationShell),
             );
           },
         ),

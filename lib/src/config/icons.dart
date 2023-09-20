@@ -6,4 +6,5 @@ class IconsPaths {
   final currencySvg = 'assets/icons/currency.svg';
   final garageSvg = 'assets/icons/garage.svg';
   final settingsSvg = 'assets/icons/settings.svg';
+  final operationAddSvg = 'assets/icons/operation_add.svg';
 }

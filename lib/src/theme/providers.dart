@@ -9,9 +9,7 @@ final lightThemeProvider = Provider<ThemeData>(
   (ref) => ThemeData(
     colorScheme: const ColorsAppLight(),
     textTheme: TextThemeApp(),
-    extensions: <ThemeExtension<dynamic>>[
-      ColorsAppLightExt(),
-    ],
+    extensions: [ColorsAppLightExt()],
   ),
 );
 
@@ -19,8 +17,6 @@ final darkThemeProvider = Provider<ThemeData>(
   (ref) => ThemeData(
     colorScheme: const ColorsAppDark(),
     textTheme: TextThemeApp(),
-    extensions: <ThemeExtension<dynamic>>[
-      ColorsAppDarkExt(),
-    ],
+    extensions: [ColorsAppDarkExt()],
   ),
 );

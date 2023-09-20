@@ -20,7 +20,7 @@ class ColorsAppLight extends ColorScheme {
   const ColorsAppLight()
       : super(
           brightness: Brightness.light,
-          shadow: const Color.fromARGB(255, 180, 180, 180),
+          shadow: const Color.fromARGB(146, 180, 180, 180),
           primary: NamedColors.accentBrown,
           onPrimary: NamedColors.white,
           secondary: NamedColors.secondary,
@@ -59,6 +59,8 @@ class ColorsAppLightExt extends ColorsAppExt {
           onBackgroundBar: NamedColors.accentBrown,
           activeButtonBar: NamedColors.accentBrown,
           onActiveButtonBar: NamedColors.snow,
+          startBackgroundGradient: NamedColors.darkGrey.withOpacity(.5),
+          endBackgroundGradient: NamedColors.darkGrey.withOpacity(0),
         );
 }
 
@@ -69,5 +71,7 @@ class ColorsAppDarkExt extends ColorsAppExt {
           onBackgroundBar: NamedColors.secondary,
           activeButtonBar: NamedColors.secondary,
           onActiveButtonBar: NamedColors.black,
+          startBackgroundGradient: NamedColors.accentBrown.withOpacity(.5),
+          endBackgroundGradient: NamedColors.accentBrown.withOpacity(0),
         );
 }

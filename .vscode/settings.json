@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["ARGB", "lerp", "prefs", "riverpod"]
+  "cSpell.words": [
+    "ARGB",
+    "lerp",
+    "prefs",
+    "riverpod",
+    "vsync"
+  ]
 }
