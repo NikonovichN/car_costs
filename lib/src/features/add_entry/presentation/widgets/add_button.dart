@@ -21,15 +21,12 @@ class AddButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final iconPaths = ref.read(iconPathsProvider);
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 84, right: 20),
-      child: AnimatedRotation(
-        turns: turns,
-        duration: duration,
-        child: GestureDetector(
-          onTap: onPressed,
-          child: SvgPicture.asset(iconPaths.operationAddSvg),
-        ),
+    return AnimatedRotation(
+      turns: turns,
+      duration: duration,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: SvgPicture.asset(iconPaths.operationAddSvg),
       ),
     );
   }

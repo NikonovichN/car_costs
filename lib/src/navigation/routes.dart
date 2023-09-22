@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'constants.dart';
+import 'route_paths.dart';
 import '../features/features.dart';
 
 final branchesProvider = Provider(
@@ -21,9 +21,9 @@ final branchesProvider = Provider(
       StatefulShellBranch(
         routes: [
           GoRoute(
-            name: routePaths.activities,
-            path: '/${routePaths.activities}',
-            builder: (context, state) => const ActivitiesScreen(),
+            name: routePaths.journal,
+            path: '/${routePaths.journal}',
+            builder: (context, state) => const JournalScreen(),
           ),
         ],
       ),
@@ -57,5 +57,3 @@ final branchesProvider = Provider(
     ];
   },
 );
-
-

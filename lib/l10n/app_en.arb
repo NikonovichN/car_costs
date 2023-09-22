@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
+  "actionButton_journal": "Journal entry",
+  "actionButton_odometer": "Odometer",
+  "actionButton_waste": "Waste",
   "dark_theme": "Dark Theme",
   "language": "Language",
   "navigationBarButtonCurrency": "Currency",

@@ -1,5 +1,8 @@
 {
   "@@locale": "ru",
+  "actionButton_journal": "Запись в журанл",
+  "actionButton_odometer": "Одометр",
+  "actionButton_waste": "Затраты",
   "dark_theme": "Темная тема",
   "language": "Язык",
   "navigationBarButtonCurrency": "Валюта",

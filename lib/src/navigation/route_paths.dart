@@ -6,7 +6,7 @@ class RoutePaths {
   const RoutePaths();
 
   final dashboard = 'dashboard';
-  final activities = 'activities';
+  final journal = 'journal';
   final expenses = 'expenses';
   final settings = 'settings';
   final garage = 'garage';
