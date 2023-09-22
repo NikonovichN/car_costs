@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'constants.dart';
+import 'route_paths.dart';
 import 'navigation_shell_provider.dart';
 import 'routes.dart';
-import 'global_scaffold.dart';
+import '../features/add_entry/presentation/page/stacked_pages.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
+
+final routerKeyProvider = Provider((ref) => _navigatorKey);
+
+final routerInformationProvider = ChangeNotifierProvider(
+  (ref) => ref.watch(routerProvider).routeInformationProvider,
+);
 
 final routerProvider = Provider<GoRouter>(
   (ref) {
@@ -24,7 +30,7 @@ final routerProvider = Provider<GoRouter>(
           builder: (context, goRouterState, navigationShell) {
             return NavigationShellProvider(
               navigationShell: navigationShell,
-              child: GlobalScaffold(body: navigationShell),
+              child: StackedPages(content: navigationShell),
             );
           },
         ),

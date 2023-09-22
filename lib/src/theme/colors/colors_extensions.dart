@@ -5,12 +5,16 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
   final Color? onBackgroundBar;
   final Color? activeButtonBar;
   final Color? onActiveButtonBar;
+  final Color? startBackgroundGradient;
+  final Color? endBackgroundGradient;
 
   ColorsAppExt({
     required this.backgroundBar,
     required this.onBackgroundBar,
     required this.activeButtonBar,
     required this.onActiveButtonBar,
+    required this.startBackgroundGradient,
+    required this.endBackgroundGradient,
   });
 
   @override
@@ -19,12 +23,18 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
     Color? onBackgroundBar,
     Color? activeButtonBar,
     Color? onActiveButtonBar,
+    Color? startBackgroundGradient,
+    Color? endBackgroundGradient,
   }) {
     return ColorsAppExt(
       backgroundBar: backgroundBar ?? this.backgroundBar,
       onBackgroundBar: onBackgroundBar ?? this.onBackgroundBar,
       activeButtonBar: activeButtonBar ?? this.activeButtonBar,
       onActiveButtonBar: onActiveButtonBar ?? this.onActiveButtonBar,
+      startBackgroundGradient:
+          startBackgroundGradient ?? this.startBackgroundGradient,
+      endBackgroundGradient:
+          endBackgroundGradient ?? this.endBackgroundGradient,
     );
   }
 
@@ -40,11 +50,12 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
       backgroundBar: Color.lerp(backgroundBar, other.backgroundBar, t),
       onBackgroundBar: Color.lerp(onBackgroundBar, other.onBackgroundBar, t),
       activeButtonBar: Color.lerp(activeButtonBar, other.activeButtonBar, t),
-      onActiveButtonBar: Color.lerp(
-        onActiveButtonBar,
-        other.onActiveButtonBar,
-        t,
-      ),
+      onActiveButtonBar:
+          Color.lerp(onActiveButtonBar, other.onActiveButtonBar, t),
+      startBackgroundGradient:
+          Color.lerp(startBackgroundGradient, other.startBackgroundGradient, t),
+      endBackgroundGradient:
+          Color.lerp(endBackgroundGradient, other.endBackgroundGradient, t),
     );
   }
 }

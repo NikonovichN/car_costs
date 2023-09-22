@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'predefined/predefined_text_styles.dart';
+import 'predefined_text_styles.dart';
+import 'text_extensions.dart';
 
 class TextThemeApp extends TextTheme {
   static TextThemeApp? _instance;
@@ -25,4 +26,9 @@ class TextThemeApp extends TextTheme {
 
   @override
   TextStyle? get bodySmall => PredefinedTextStyle.merriweatherSmall;
+}
+
+class TextThemeExtApp extends TextExt {
+  TextThemeExtApp()
+      : super(openSansRegular: PredefinedTextStyle.openSansRegular);
 }
