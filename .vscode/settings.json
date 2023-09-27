@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "ARGB",
+    "dotenv",
     "lerp",
     "prefs",
     "riverpod",
