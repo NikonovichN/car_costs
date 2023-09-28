@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88953084342",
+    "project_id": "car-costs-prod",
+    "storage_bucket": "car-costs-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88953084342:android:e75f37662900b615068917",
+        "android_client_info": {
+          "package_name": "com.example.car_costs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNI4s8Mxd9piLlMoAYv3G0rDFaUrEX6XM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
