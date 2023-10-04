@@ -5,6 +5,8 @@ final routePathsProvider = Provider<RoutePaths>((_) => const RoutePaths());
 class RoutePaths {
   const RoutePaths();
 
+  final auth = 'auth';
+
   final dashboard = 'dashboard';
   final journal = 'journal';
   final expenses = 'expenses';

@@ -17,16 +17,17 @@ class CarCostsApp extends ConsumerWidget {
     final isDarkTheme = ref.watch(darkThemeControllerProvider).readValue();
     final locale = ref.watch(localizationControllerProvider).readValue();
 
-    final router = ref.read(routerProvider);
+    final router = ref.watch(routerProvider);
+
     final lightTheme = ref.read(lightThemeProvider);
     final darkTheme = ref.read(darkThemeProvider);
 
     return MaterialApp.router(
+      locale: locale,
       routerConfig: router,
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
-      locale: locale,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
     );

@@ -28,7 +28,10 @@ class TextThemeApp extends TextTheme {
   TextStyle? get bodySmall => PredefinedTextStyle.merriweatherSmall;
 }
 
-class TextThemeExtApp extends TextExt {
+class TextThemeExtApp extends TextStylesExt {
   TextThemeExtApp()
-      : super(openSansRegular: PredefinedTextStyle.openSansRegular);
+      : super(
+          openSansRegular: PredefinedTextStyle.openSansRegular,
+          merriweatherBold: PredefinedTextStyle.merriweatherBold,
+        );
 }

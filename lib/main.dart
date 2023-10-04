@@ -9,8 +9,8 @@ void main() async {
   final containerProvider = await initializer();
 
   runApp(
-    UncontrolledProviderScope(
-      container: containerProvider,
+    ProviderScope(
+      parent: containerProvider,
       child: const CarCostsApp(),
     ),
   );

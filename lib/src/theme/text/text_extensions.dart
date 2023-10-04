@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
 
-class TextExt extends ThemeExtension<TextExt> {
+class TextStylesExt extends ThemeExtension<TextStylesExt> {
   final TextStyle openSansRegular;
+  final TextStyle merriweatherBold;
 
-  TextExt({required this.openSansRegular});
+  TextStylesExt(
+      {required this.openSansRegular, required this.merriweatherBold});
 
   @override
-  ThemeExtension<TextExt> copyWith({TextStyle? openSansRegular}) {
-    return TextExt(openSansRegular: openSansRegular ?? this.openSansRegular);
+  ThemeExtension<TextStylesExt> copyWith({
+    TextStyle? openSansRegular,
+    TextStyle? merriweatherBold,
+  }) {
+    return TextStylesExt(
+      openSansRegular: openSansRegular ?? this.openSansRegular,
+      merriweatherBold: merriweatherBold ?? this.merriweatherBold,
+    );
   }
 
   @override
-  ThemeExtension<TextExt> lerp(
-    covariant ThemeExtension<TextExt>? other,
+  ThemeExtension<TextStylesExt> lerp(
+    covariant ThemeExtension<TextStylesExt>? other,
     double t,
   ) {
-    if (other is! TextExt) {
+    if (other is! TextStylesExt) {
       return this;
     }
-    return TextExt(
+    return TextStylesExt(
       openSansRegular: TextStyle.lerp(
         openSansRegular,
         other.openSansRegular,
+        t,
+      )!,
+      merriweatherBold: TextStyle.lerp(
+        merriweatherBold,
+        other.merriweatherBold,
         t,
       )!,
     );

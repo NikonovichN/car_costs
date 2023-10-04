@@ -4,6 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'route_paths.dart';
 import '../features/features.dart';
 
+final authRouteProvider = Provider((ref) {
+  final routePaths = ref.read(routePathsProvider);
+
+  return GoRoute(
+    name: routePaths.auth,
+    path: '/${routePaths.auth}',
+    builder: (context, state) => const AuthScreen(),
+  );
+});
+
 final branchesProvider = Provider(
   (ref) {
     final routePaths = ref.read(routePathsProvider);
