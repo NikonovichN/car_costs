@@ -8,12 +8,13 @@ final class NamedColors {
 
   static const accentBrown = Color(0xFF5E454B);
   static const secondary = Color(0xFFD8B384);
-  static const error = Color(0xFFC60C22);
+  static const error = Color(0xFFEC4458);
   static const lemonChiffon = Color(0xFFF3F0D7);
   static const oldBurgundy = Color(0xFF242020);
   static const lightGrey = Color(0xFFD9D9D9);
   static const darkGrey = Color(0xFF414141);
   static const snow = Color(0xFFF6F6F6);
+  static const dirtySnow = Color(0xFFA9A9A9);
 }
 
 class ColorsAppLight extends ColorScheme {
@@ -61,6 +62,8 @@ class ColorsAppLightExt extends ColorsAppExt {
           onActiveButtonBar: NamedColors.snow,
           startBackgroundGradient: NamedColors.darkGrey.withOpacity(.5),
           endBackgroundGradient: NamedColors.darkGrey.withOpacity(0),
+          onBackgroundInverse: NamedColors.accentBrown,
+          placeholder: NamedColors.dirtySnow,
         );
 }
 
@@ -73,5 +76,7 @@ class ColorsAppDarkExt extends ColorsAppExt {
           onActiveButtonBar: NamedColors.black,
           startBackgroundGradient: NamedColors.accentBrown.withOpacity(.5),
           endBackgroundGradient: NamedColors.accentBrown.withOpacity(0),
+          onBackgroundInverse: NamedColors.secondary,
+          placeholder: NamedColors.white,
         );
 }

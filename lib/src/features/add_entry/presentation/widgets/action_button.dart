@@ -18,7 +18,7 @@ class ActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final textThemeExt = Theme.of(context).extension<TextExt>()!;
+    final textThemeExt = Theme.of(context).extension<TextStylesExt>()!;
     final shadowSchemeExt = Theme.of(context).extension<ShadowsExt>()!;
 
     return Material(

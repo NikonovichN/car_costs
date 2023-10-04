@@ -3,6 +3,7 @@
     "ARGB",
     "dotenv",
     "lerp",
+    "merriweather",
     "prefs",
     "riverpod",
     "vsync"

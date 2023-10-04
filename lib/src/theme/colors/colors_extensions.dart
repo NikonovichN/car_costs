@@ -7,6 +7,8 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
   final Color? onActiveButtonBar;
   final Color? startBackgroundGradient;
   final Color? endBackgroundGradient;
+  final Color? onBackgroundInverse;
+  final Color? placeholder;
 
   ColorsAppExt({
     required this.backgroundBar,
@@ -15,6 +17,8 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
     required this.onActiveButtonBar,
     required this.startBackgroundGradient,
     required this.endBackgroundGradient,
+    required this.onBackgroundInverse,
+    required this.placeholder,
   });
 
   @override
@@ -25,6 +29,8 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
     Color? onActiveButtonBar,
     Color? startBackgroundGradient,
     Color? endBackgroundGradient,
+    Color? onBackgroundInverse,
+    Color? placeholder,
   }) {
     return ColorsAppExt(
       backgroundBar: backgroundBar ?? this.backgroundBar,
@@ -35,6 +41,8 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
           startBackgroundGradient ?? this.startBackgroundGradient,
       endBackgroundGradient:
           endBackgroundGradient ?? this.endBackgroundGradient,
+      onBackgroundInverse: onBackgroundInverse ?? this.onBackgroundInverse,
+      placeholder: placeholder ?? this.placeholder,
     );
   }
 
@@ -56,6 +64,9 @@ class ColorsAppExt extends ThemeExtension<ColorsAppExt> {
           Color.lerp(startBackgroundGradient, other.startBackgroundGradient, t),
       endBackgroundGradient:
           Color.lerp(endBackgroundGradient, other.endBackgroundGradient, t),
+      onBackgroundInverse:
+          Color.lerp(onBackgroundInverse, other.onBackgroundInverse, t),
+      placeholder: Color.lerp(placeholder, other.placeholder, t),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'route_paths.dart';
 import 'navigation_shell_provider.dart';
 import 'routes.dart';
-import '../features/add_entry/presentation/page/stacked_pages.dart';
+import '../features/features.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
 
@@ -16,10 +16,13 @@ final routerInformationProvider = ChangeNotifierProvider(
   (ref) => ref.watch(routerProvider).routeInformationProvider,
 );
 
-final routerProvider = Provider<GoRouter>(
+final routerProvider = Provider(
   (ref) {
+    final user = ref.watch(userControllerProvider);
+
     final routePaths = ref.read(routePathsProvider);
     final branches = ref.read(branchesProvider);
+    final authRoute = ref.read(authRouteProvider);
 
     return GoRouter(
       navigatorKey: _navigatorKey,
@@ -34,7 +37,9 @@ final routerProvider = Provider<GoRouter>(
             );
           },
         ),
+        authRoute,
       ],
+      redirect: (context, state) => user == null ? '/${routePaths.auth}' : null,
     );
   },
 );

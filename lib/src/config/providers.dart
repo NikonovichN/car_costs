@@ -13,6 +13,4 @@ final iconPathsProvider = Provider((ref) => const IconsPaths());
 
 Future<void> initializeProviders(ProviderContainer container) async {
   await container.read(sharedPreferencesProvider.future);
-  container.read(defaultValuesProvider);
-  container.read(iconPathsProvider);
 }
