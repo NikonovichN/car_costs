@@ -42,7 +42,11 @@ class AuthScreenState extends ConsumerState<AuthScreen> {
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         child: authController.isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? Center(
+                child: CircularProgressIndicator(
+                  color: colorScheme.onBackground,
+                ),
+              )
             : Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 53),
                 child: Column(

@@ -33,6 +33,7 @@ class _TextEditorAppState extends State<TextEditorApp> {
   @override
   Widget build(BuildContext context) {
     final textStylesExt = Theme.of(context).extension<TextStylesExt>()!;
+    final colorScheme = Theme.of(context).colorScheme;
     final colorSchemeExt = Theme.of(context).extension<ColorsAppExt>()!;
 
     final underlineBorder = UnderlineInputBorder(
@@ -44,10 +45,11 @@ class _TextEditorAppState extends State<TextEditorApp> {
       style: textStylesExt.openSansRegular,
       onChanged: widget.onChanged,
       obscureText: widget.obscureText,
+      cursorColor: colorScheme.onBackground,
       decoration: InputDecoration(
         enabledBorder: underlineBorder,
         focusedBorder: underlineBorder.copyWith(
-          borderSide: const BorderSide(width: 2),
+          borderSide: underlineBorder.borderSide.copyWith(width: 2),
         ),
         label: Text(
           widget.placeholder ?? _defaultPlaceholder,

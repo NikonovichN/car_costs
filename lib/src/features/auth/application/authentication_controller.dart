@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'user_controller.dart';
 import '../data/user_repository.dart';
 
-final authenticationControllerProvider = StateNotifierProvider.autoDispose<
-    AuthenticationController, AsyncValue<void>>(AuthenticationController.new);
+final authenticationControllerProvider =
+    StateNotifierProvider<AuthenticationController, AsyncValue<void>>(
+        AuthenticationController.new);
 
 class AuthenticationController extends StateNotifier<AsyncValue<void>> {
   final Ref ref;
