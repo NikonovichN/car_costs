@@ -24,6 +24,9 @@ final addEntryController = Provider.autoDispose<List<AddEntryAction>>((ref) {
       return [configActions[ActionTypes.journal]!];
     case (List<String> values) when values[1] == routePaths.expenses:
       return [configActions[ActionTypes.waste]!];
+    case (List<String> values)
+        when values[1] == routePaths.garage && values.length == 2:
+      return [configActions[ActionTypes.addCar]!];
     default:
       return [];
   }
@@ -35,21 +38,27 @@ final configActionsProvider = Provider.autoDispose((ref) {
   return {
     ActionTypes.odometer: AddEntryAction(
       generateLabel: (context) =>
-          AppLocalizations.of(context)?.actionButton_odometer ?? '',
+          AppLocalizations.of(context)!.actionButton_odometer,
       iconPathSvg: iconPaths.odometerSvg,
       onPress: () => print('Odometer'),
     ),
     ActionTypes.waste: AddEntryAction(
       generateLabel: (context) =>
-          AppLocalizations.of(context)?.actionButton_waste ?? '',
+          AppLocalizations.of(context)!.actionButton_waste,
       iconPathSvg: iconPaths.recycleSvg,
       onPress: () => print('Add waste'),
     ),
     ActionTypes.journal: AddEntryAction(
       generateLabel: (context) =>
-          AppLocalizations.of(context)?.actionButton_journal ?? '',
+          AppLocalizations.of(context)!.actionButton_journal,
       iconPathSvg: iconPaths.carSvg,
       onPress: () => print('Add active'),
+    ),
+    ActionTypes.addCar: AddEntryAction(
+      generateLabel: (context) =>
+          AppLocalizations.of(context)!.actionButton_add_car,
+      iconPathSvg: iconPaths.garageWithCarSvg,
+      onPress: () => print('Add car'),
     ),
   };
 });
@@ -58,6 +67,7 @@ enum ActionTypes {
   odometer,
   waste,
   journal,
+  addCar,
 }
 
 class AddEntryAction {

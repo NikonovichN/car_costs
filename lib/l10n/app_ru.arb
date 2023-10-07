@@ -1,5 +1,6 @@
 {
   "@@locale": "ru",
+  "actionButton_add_car": "Добавить авто",
   "actionButton_journal": "Запись в журанл",
   "actionButton_odometer": "Одометр",
   "actionButton_waste": "Затраты",

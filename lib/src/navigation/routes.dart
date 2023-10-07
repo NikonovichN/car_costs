@@ -61,6 +61,13 @@ final branchesProvider = Provider(
             name: routePaths.garage,
             path: '/${routePaths.garage}',
             builder: (context, state) => const GarageScreen(),
+            routes: [
+              GoRoute(
+                name: routePaths.addCar,
+                path: routePaths.addCar,
+                builder: (context, state) => const AddCarScreen(),
+              ),
+            ],
           ),
         ],
       ),
