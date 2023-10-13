@@ -90,7 +90,11 @@ class StackedPagesState extends ConsumerState<StackedPages> {
                             ),
                           ),
                           text: Text(action.generateLabel(context)),
-                          onPress: action.onPress,
+                          onPress: () async {
+                            _switchBackground();
+                            await Future.delayed(_animationDuration);
+                            action.onPress();
+                          },
                         ),
                       ),
                     ),

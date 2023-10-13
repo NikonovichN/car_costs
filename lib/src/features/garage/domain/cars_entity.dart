@@ -52,8 +52,8 @@ class JournalEntryEntity with _$JournalEntryEntity {
 @freezed
 class MetaEntity with _$MetaEntity {
   const factory MetaEntity({
-    required int createdAt,
-    required int lastChangeAt,
+    required DateTime createdAt,
+    required DateTime lastChangeAt,
   }) = _MetaEntity;
 
   factory MetaEntity.fromJson(Map<String, Object?> json) =>

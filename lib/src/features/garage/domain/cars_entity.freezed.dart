@@ -791,8 +791,8 @@ MetaEntity _$MetaEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MetaEntity {
-  int get createdAt => throw _privateConstructorUsedError;
-  int get lastChangeAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime get lastChangeAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -806,7 +806,7 @@ abstract class $MetaEntityCopyWith<$Res> {
           MetaEntity value, $Res Function(MetaEntity) then) =
       _$MetaEntityCopyWithImpl<$Res, MetaEntity>;
   @useResult
-  $Res call({int createdAt, int lastChangeAt});
+  $Res call({DateTime createdAt, DateTime lastChangeAt});
 }
 
 /// @nodoc
@@ -829,11 +829,11 @@ class _$MetaEntityCopyWithImpl<$Res, $Val extends MetaEntity>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
       lastChangeAt: null == lastChangeAt
           ? _value.lastChangeAt
           : lastChangeAt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
     ) as $Val);
   }
 }
@@ -846,7 +846,7 @@ abstract class _$$_MetaEntityCopyWith<$Res>
       __$$_MetaEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int createdAt, int lastChangeAt});
+  $Res call({DateTime createdAt, DateTime lastChangeAt});
 }
 
 /// @nodoc
@@ -867,11 +867,11 @@ class __$$_MetaEntityCopyWithImpl<$Res>
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
       lastChangeAt: null == lastChangeAt
           ? _value.lastChangeAt
           : lastChangeAt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as DateTime,
     ));
   }
 }
@@ -885,9 +885,9 @@ class _$_MetaEntity with DiagnosticableTreeMixin implements _MetaEntity {
       _$$_MetaEntityFromJson(json);
 
   @override
-  final int createdAt;
+  final DateTime createdAt;
   @override
-  final int lastChangeAt;
+  final DateTime lastChangeAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -934,16 +934,16 @@ class _$_MetaEntity with DiagnosticableTreeMixin implements _MetaEntity {
 
 abstract class _MetaEntity implements MetaEntity {
   const factory _MetaEntity(
-      {required final int createdAt,
-      required final int lastChangeAt}) = _$_MetaEntity;
+      {required final DateTime createdAt,
+      required final DateTime lastChangeAt}) = _$_MetaEntity;
 
   factory _MetaEntity.fromJson(Map<String, dynamic> json) =
       _$_MetaEntity.fromJson;
 
   @override
-  int get createdAt;
+  DateTime get createdAt;
   @override
-  int get lastChangeAt;
+  DateTime get lastChangeAt;
   @override
   @JsonKey(ignore: true)
   _$$_MetaEntityCopyWith<_$_MetaEntity> get copyWith =>

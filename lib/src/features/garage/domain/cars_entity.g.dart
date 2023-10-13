@@ -69,12 +69,12 @@ Map<String, dynamic> _$$_JournalEntryEntityToJson(
 
 _$_MetaEntity _$$_MetaEntityFromJson(Map<String, dynamic> json) =>
     _$_MetaEntity(
-      createdAt: json['createdAt'] as int,
-      lastChangeAt: json['lastChangeAt'] as int,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      lastChangeAt: DateTime.parse(json['lastChangeAt'] as String),
     );
 
 Map<String, dynamic> _$$_MetaEntityToJson(_$_MetaEntity instance) =>
     <String, dynamic>{
-      'createdAt': instance.createdAt,
-      'lastChangeAt': instance.lastChangeAt,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'lastChangeAt': instance.lastChangeAt.toIso8601String(),
     };

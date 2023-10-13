@@ -25,9 +25,9 @@ class CarsRepositoryImpl implements CarsRepository {
 
   @override
   Future<void> addCar(Vin vin, CarEntity carEntity) async {
-    await _remoteDataSource.writeValue(
+    await _remoteDataSource.updateValue(
       _dataBasePaths.car('userUid', vin),
-      carEntity,
+      carEntity.toJson(),
     );
   }
 
@@ -35,7 +35,7 @@ class CarsRepositoryImpl implements CarsRepository {
   Future<void> updateCar(Vin vin, CarEntity carEntity) async {
     await _remoteDataSource.updateValue(
       _dataBasePaths.car('userUid', vin),
-      carEntity,
+      carEntity.toJson(),
     );
   }
 

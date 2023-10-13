@@ -34,6 +34,8 @@ final addEntryController = Provider.autoDispose<List<AddEntryAction>>((ref) {
 
 final configActionsProvider = Provider.autoDispose((ref) {
   final iconPaths = ref.read(iconPathsProvider);
+  final routePaths = ref.read(routePathsProvider);
+  final router = ref.read(routerProvider);
 
   return {
     ActionTypes.odometer: AddEntryAction(
@@ -58,7 +60,7 @@ final configActionsProvider = Provider.autoDispose((ref) {
       generateLabel: (context) =>
           AppLocalizations.of(context)!.actionButton_add_car,
       iconPathSvg: iconPaths.garageWithCarSvg,
-      onPress: () => print('Add car'),
+      onPress: () => router.goNamed(routePaths.addCar),
     ),
   };
 });

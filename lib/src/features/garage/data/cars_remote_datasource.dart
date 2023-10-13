@@ -10,7 +10,7 @@ final carsRemoteDataSourceProvider =
 
 abstract class CarsRemoteDataSource {
   Future<void> writeValue(List<String> path, Object jsonData);
-  Future<void> updateValue(List<String> path, Object jsonData);
+  Future<void> updateValue(List<String> path, Map<String, dynamic> jsonData);
   Future<void> deleteValue(List<String> path);
   Future<Object> readValue(List<String> path);
 }
@@ -27,7 +27,10 @@ class CarsRemoteDataSourceImpl implements CarsRemoteDataSource {
   }
 
   @override
-  Future<void> updateValue(List<String> path, Object jsonData) async {
+  Future<void> updateValue(
+    List<String> path,
+    Map<String, dynamic> jsonData,
+  ) async {
     await _database
         .ref(path.sublist(0, path.length - 1).join())
         .update(Map.from({path.last: jsonData}));

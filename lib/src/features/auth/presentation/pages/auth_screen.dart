@@ -75,11 +75,16 @@ class AuthScreenState extends ConsumerState<AuthScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 30),
                       height: 140,
                       child: authController.hasError
-                          ? Text(
-                              authController.error.toString(),
-                              style: textStyles.bodyMedium!.copyWith(
-                                color: colorScheme.error,
-                              ),
+                          ? ListView(
+                              padding: const EdgeInsets.all(0),
+                              children: [
+                                Text(
+                                  authController.error.toString(),
+                                  style: textStyles.bodyMedium!.copyWith(
+                                    color: colorScheme.error,
+                                  ),
+                                ),
+                              ],
                             )
                           : null,
                     ),
