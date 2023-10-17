@@ -105,7 +105,7 @@ class AddCarScreenState extends ConsumerState<AddCarScreen> {
                     const SizedBox(width: 20),
                     FullFilledButton(
                       onPressed: () =>
-                          ref.read(carControllerProvider.notifier).addCar(
+                          ref.read(carControllerProvider.notifier).updateCar(
                                 _vinController.text,
                                 CarEntity(
                                   manufacture: _manufactureController.text,

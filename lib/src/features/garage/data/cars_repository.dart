@@ -9,7 +9,6 @@ final carsRepositoryProvider =
     Provider.autoDispose<CarsRepository>(CarsRepositoryImpl.new);
 
 abstract class CarsRepository {
-  Future<void> addCar(String userId, Vin vin, CarEntity carEntity);
   Future<void> updateCar(String userId, Vin vin, CarEntity carEntity);
   Future<void> deleteCar(String userId, Vin vin);
   Future<CarsEntity?> readAllCars(String userId);
@@ -22,14 +21,6 @@ class CarsRepositoryImpl implements CarsRepository {
   CarsRepositoryImpl(Ref ref)
       : _fireDataBase = ref.read(fireDataBaseManagerProvider),
         _dataBasePaths = ref.read(dataBasePathsProvider);
-
-  @override
-  Future<void> addCar(String userId, Vin vin, CarEntity carEntity) async {
-    await _fireDataBase.updateValue(
-      _dataBasePaths.car(userId, vin),
-      carEntity.toJson(),
-    );
-  }
 
   @override
   Future<void> updateCar(String userId, Vin vin, CarEntity carEntity) async {

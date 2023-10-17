@@ -22,27 +22,6 @@ class CarController extends StateNotifier<AsyncValue> {
         _routePaths = ref.read(routePathsProvider),
         super(const AsyncData(null));
 
-  Future<void> addCar(Vin vin, CarEntity carEntity) async {
-    state = const AsyncValue.loading();
-
-    final user = ref.read(userControllerProvider);
-    final router = ref.read(routerProvider);
-
-    try {
-      if (user == null) {
-        throw NoUserDataException();
-      }
-
-      await _carsRepository.addCar(user.uid, vin, carEntity);
-      state = const AsyncValue.data(null);
-
-      ref.read(carsControllerProvider.notifier).getAllCars();
-      router.goNamed(_routePaths.garage);
-    } catch (error, stackTrace) {
-      state = AsyncValue.error(error, stackTrace);
-    }
-  }
-
   Future<void> updateCar(Vin vin, CarEntity carEntity) async {
     state = const AsyncValue.loading();
 
