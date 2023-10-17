@@ -4,19 +4,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:car_costs/src/config/providers.dart';
 import 'package:car_costs/src/utils/errors.dart';
 
-final carsRemoteDataSourceProvider =
-    Provider.autoDispose<CarsRemoteDataSource>(CarsRemoteDataSourceImpl.new);
+final fireDataBaseManagerProvider =
+    Provider<FireDataBaseManager>(FireDataBaseManagerImpl.new);
 
-abstract class CarsRemoteDataSource {
+abstract class FireDataBaseManager {
   Future<void> updateValue(List<String> path, Map<String, dynamic> jsonData);
   Future<void> deleteValue(List<String> path);
   Future<Map> readValue(List<String> path);
 }
 
-class CarsRemoteDataSourceImpl implements CarsRemoteDataSource {
+class FireDataBaseManagerImpl implements FireDataBaseManager {
   final FirebaseDatabase _database;
 
-  CarsRemoteDataSourceImpl(Ref ref)
+  FireDataBaseManagerImpl(Ref ref)
       : _database = ref.read(firebaseDatabaseProvider);
 
   @override
