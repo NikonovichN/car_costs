@@ -19,7 +19,11 @@ class GarageScreen extends ConsumerWidget {
           : ListView(
               children: [
                 carsController.mapOrNull(
-                      data: (data) => Text(data.toString()),
+                      data: (data) => Center(
+                        child: data.value == null
+                            ? const Text('No data yet.')
+                            : Text(data.toString()),
+                      ),
                       error: (error) => Text(
                         error.toString(),
                         style: TextStyle(color: colorScheme.error),

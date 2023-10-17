@@ -180,7 +180,7 @@ mixin _$CarEntity {
   String get metrics => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   MetaEntity get meta => throw _privateConstructorUsedError;
-  List<JournalEntryEntity> get journal => throw _privateConstructorUsedError;
+  List<JournalEntryEntity>? get journal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -202,7 +202,7 @@ abstract class $CarEntityCopyWith<$Res> {
       String metrics,
       String imageUrl,
       MetaEntity meta,
-      List<JournalEntryEntity> journal});
+      List<JournalEntryEntity>? journal});
 
   $MetaEntityCopyWith<$Res> get meta;
 }
@@ -228,7 +228,7 @@ class _$CarEntityCopyWithImpl<$Res, $Val extends CarEntity>
     Object? metrics = null,
     Object? imageUrl = null,
     Object? meta = null,
-    Object? journal = null,
+    Object? journal = freezed,
   }) {
     return _then(_value.copyWith(
       manufacture: null == manufacture
@@ -263,10 +263,10 @@ class _$CarEntityCopyWithImpl<$Res, $Val extends CarEntity>
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaEntity,
-      journal: null == journal
+      journal: freezed == journal
           ? _value.journal
           : journal // ignore: cast_nullable_to_non_nullable
-              as List<JournalEntryEntity>,
+              as List<JournalEntryEntity>?,
     ) as $Val);
   }
 
@@ -295,7 +295,7 @@ abstract class _$$_CarEntityCopyWith<$Res> implements $CarEntityCopyWith<$Res> {
       String metrics,
       String imageUrl,
       MetaEntity meta,
-      List<JournalEntryEntity> journal});
+      List<JournalEntryEntity>? journal});
 
   @override
   $MetaEntityCopyWith<$Res> get meta;
@@ -320,7 +320,7 @@ class __$$_CarEntityCopyWithImpl<$Res>
     Object? metrics = null,
     Object? imageUrl = null,
     Object? meta = null,
-    Object? journal = null,
+    Object? journal = freezed,
   }) {
     return _then(_$_CarEntity(
       manufacture: null == manufacture
@@ -355,10 +355,10 @@ class __$$_CarEntityCopyWithImpl<$Res>
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as MetaEntity,
-      journal: null == journal
+      journal: freezed == journal
           ? _value._journal
           : journal // ignore: cast_nullable_to_non_nullable
-              as List<JournalEntryEntity>,
+              as List<JournalEntryEntity>?,
     ));
   }
 }
@@ -375,7 +375,7 @@ class _$_CarEntity with DiagnosticableTreeMixin implements _CarEntity {
       required this.metrics,
       required this.imageUrl,
       required this.meta,
-      required final List<JournalEntryEntity> journal})
+      required final List<JournalEntryEntity>? journal})
       : _journal = journal;
 
   factory _$_CarEntity.fromJson(Map<String, dynamic> json) =>
@@ -397,12 +397,14 @@ class _$_CarEntity with DiagnosticableTreeMixin implements _CarEntity {
   final String imageUrl;
   @override
   final MetaEntity meta;
-  final List<JournalEntryEntity> _journal;
+  final List<JournalEntryEntity>? _journal;
   @override
-  List<JournalEntryEntity> get journal {
+  List<JournalEntryEntity>? get journal {
+    final value = _journal;
+    if (value == null) return null;
     if (_journal is EqualUnmodifiableListView) return _journal;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_journal);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -484,7 +486,7 @@ abstract class _CarEntity implements CarEntity {
       required final String metrics,
       required final String imageUrl,
       required final MetaEntity meta,
-      required final List<JournalEntryEntity> journal}) = _$_CarEntity;
+      required final List<JournalEntryEntity>? journal}) = _$_CarEntity;
 
   factory _CarEntity.fromJson(Map<String, dynamic> json) =
       _$_CarEntity.fromJson;
@@ -506,7 +508,7 @@ abstract class _CarEntity implements CarEntity {
   @override
   MetaEntity get meta;
   @override
-  List<JournalEntryEntity> get journal;
+  List<JournalEntryEntity>? get journal;
   @override
   @JsonKey(ignore: true)
   _$$_CarEntityCopyWith<_$_CarEntity> get copyWith =>
@@ -791,7 +793,9 @@ MetaEntity _$MetaEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MetaEntity {
+  @TimestampSerializer()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @TimestampSerializer()
   DateTime get lastChangeAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -806,7 +810,9 @@ abstract class $MetaEntityCopyWith<$Res> {
           MetaEntity value, $Res Function(MetaEntity) then) =
       _$MetaEntityCopyWithImpl<$Res, MetaEntity>;
   @useResult
-  $Res call({DateTime createdAt, DateTime lastChangeAt});
+  $Res call(
+      {@TimestampSerializer() DateTime createdAt,
+      @TimestampSerializer() DateTime lastChangeAt});
 }
 
 /// @nodoc
@@ -846,7 +852,9 @@ abstract class _$$_MetaEntityCopyWith<$Res>
       __$$_MetaEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime createdAt, DateTime lastChangeAt});
+  $Res call(
+      {@TimestampSerializer() DateTime createdAt,
+      @TimestampSerializer() DateTime lastChangeAt});
 }
 
 /// @nodoc
@@ -879,14 +887,18 @@ class __$$_MetaEntityCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MetaEntity with DiagnosticableTreeMixin implements _MetaEntity {
-  const _$_MetaEntity({required this.createdAt, required this.lastChangeAt});
+  const _$_MetaEntity(
+      {@TimestampSerializer() required this.createdAt,
+      @TimestampSerializer() required this.lastChangeAt});
 
   factory _$_MetaEntity.fromJson(Map<String, dynamic> json) =>
       _$$_MetaEntityFromJson(json);
 
   @override
+  @TimestampSerializer()
   final DateTime createdAt;
   @override
+  @TimestampSerializer()
   final DateTime lastChangeAt;
 
   @override
@@ -934,15 +946,18 @@ class _$_MetaEntity with DiagnosticableTreeMixin implements _MetaEntity {
 
 abstract class _MetaEntity implements MetaEntity {
   const factory _MetaEntity(
-      {required final DateTime createdAt,
-      required final DateTime lastChangeAt}) = _$_MetaEntity;
+          {@TimestampSerializer() required final DateTime createdAt,
+          @TimestampSerializer() required final DateTime lastChangeAt}) =
+      _$_MetaEntity;
 
   factory _MetaEntity.fromJson(Map<String, dynamic> json) =
       _$_MetaEntity.fromJson;
 
   @override
+  @TimestampSerializer()
   DateTime get createdAt;
   @override
+  @TimestampSerializer()
   DateTime get lastChangeAt;
   @override
   @JsonKey(ignore: true)

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:car_costs/src/utils/date_time_serializer.dart';
+
 part 'cars_entity.freezed.dart';
 part 'cars_entity.g.dart';
 
@@ -27,7 +29,7 @@ class CarEntity with _$CarEntity {
     required String metrics,
     required String imageUrl,
     required MetaEntity meta,
-    required List<JournalEntryEntity> journal,
+    required List<JournalEntryEntity>? journal,
   }) = _CarEntity;
 
   factory CarEntity.fromJson(Map<String, Object?> json) =>
@@ -52,8 +54,8 @@ class JournalEntryEntity with _$JournalEntryEntity {
 @freezed
 class MetaEntity with _$MetaEntity {
   const factory MetaEntity({
-    required DateTime createdAt,
-    required DateTime lastChangeAt,
+    @TimestampSerializer() required DateTime createdAt,
+    @TimestampSerializer() required DateTime lastChangeAt,
   }) = _MetaEntity;
 
   factory MetaEntity.fromJson(Map<String, Object?> json) =>

@@ -23,13 +23,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<void> addUserToDataBase(String userId) async {
     // Firebase database can't write empty array and objects types
     await _database.ref('${_databasePaths.users}/').update({
-      userId: {
-        "cars": {
-          "journal": "",
-          "expenses": "",
-        },
-        "categories": ""
-      },
+      userId: {"cars": ""}
     });
   }
 }

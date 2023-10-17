@@ -9,10 +9,10 @@ final carsRepositoryProvider =
     Provider.autoDispose<CarsRepository>(CarsRepositoryImpl.new);
 
 abstract class CarsRepository {
-  Future<void> addCar(Vin vin, CarEntity carEntity);
-  Future<void> updateCar(Vin vin, CarEntity carEntity);
-  Future<void> deleteCar(Vin vin);
-  Future<CarsEntity?> readAllCars();
+  Future<void> addCar(String userId, Vin vin, CarEntity carEntity);
+  Future<void> updateCar(String userId, Vin vin, CarEntity carEntity);
+  Future<void> deleteCar(String userId, Vin vin);
+  Future<CarsEntity?> readAllCars(String userId);
 }
 
 class CarsRepositoryImpl implements CarsRepository {
@@ -24,34 +24,30 @@ class CarsRepositoryImpl implements CarsRepository {
         _dataBasePaths = ref.read(dataBasePathsProvider);
 
   @override
-  Future<void> addCar(Vin vin, CarEntity carEntity) async {
+  Future<void> addCar(String userId, Vin vin, CarEntity carEntity) async {
     await _remoteDataSource.updateValue(
-      _dataBasePaths.car('userUid', vin),
+      _dataBasePaths.car(userId, vin),
       carEntity.toJson(),
     );
   }
 
   @override
-  Future<void> updateCar(Vin vin, CarEntity carEntity) async {
+  Future<void> updateCar(String userId, Vin vin, CarEntity carEntity) async {
     await _remoteDataSource.updateValue(
-      _dataBasePaths.car('userUid', vin),
+      _dataBasePaths.car(userId, vin),
       carEntity.toJson(),
     );
   }
 
   @override
-  Future<void> deleteCar(Vin vin) async {
-    await _remoteDataSource.deleteValue(
-      _dataBasePaths.car('userUid', vin),
-    );
+  Future<void> deleteCar(String userId, Vin vin) async {
+    await _remoteDataSource.deleteValue(_dataBasePaths.car(userId, vin));
   }
 
   @override
-  Future<CarsEntity?> readAllCars() async {
-    final cars = await _remoteDataSource.readValue(
-      _dataBasePaths.cars('userUid'),
-    );
+  Future<CarsEntity?> readAllCars(String userId) async {
+    final cars = await _remoteDataSource.readValue(_dataBasePaths.cars(userId));
 
-    return CarsEntity.fromJson(cars as Map<String, dynamic>);
+    return CarsEntity.fromJson({"cars": cars});
   }
 }
