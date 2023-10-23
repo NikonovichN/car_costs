@@ -12,7 +12,7 @@ final carsRepositoryProvider =
 abstract class CarsRepository {
   Future<void> updateCar(String userId, Vin vin, CarEntity carEntity);
   Future<void> deleteCar(String userId, Vin vin);
-  Future<CarsEntity?> readAllCars(String userId);
+  Future<CarsEntity> readAllCars(String userId);
 }
 
 class CarsRepositoryImpl implements CarsRepository {
@@ -37,7 +37,7 @@ class CarsRepositoryImpl implements CarsRepository {
   }
 
   @override
-  Future<CarsEntity?> readAllCars(String userId) async {
+  Future<CarsEntity> readAllCars(String userId) async {
     final data = await _fireDataBase.readValue(_dataBasePaths.cars(userId));
 
     if (data is! Map) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/car_card.dart';
 import '../../application/cars_controller.dart';
 
 class GarageScreen extends ConsumerWidget {
@@ -14,24 +15,32 @@ class GarageScreen extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: ref.read(carsControllerProvider.notifier).getAllCars,
-      child: carsController.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : ListView(
-              children: [
-                carsController.mapOrNull(
-                      data: (data) => Center(
-                        child: data.value == null
-                            ? const Text('No data yet.')
-                            : Text(data.toString()),
-                      ),
-                      error: (error) => Text(
-                        error.toString(),
-                        style: TextStyle(color: colorScheme.error),
-                      ),
-                    ) ??
-                    const SizedBox.shrink(),
-              ],
-            ),
+      child: carsController.map(
+        loading: (_) => const Center(child: CircularProgressIndicator()),
+        data: (data) => Center(
+          child: data.value == null
+              ? const Text('No data yet.')
+              : ListView(
+                  padding: const EdgeInsets.all(16),
+                  children: data.value!.cars.entries
+                      .map(
+                        (carEntity) => Padding(
+                          key: ValueKey(carEntity.key),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: CarCard(
+                            vin: carEntity.key,
+                            car: carEntity.value,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+        ),
+        error: (error) => Text(
+          error.toString(),
+          style: TextStyle(color: colorScheme.error),
+        ),
+      ),
     );
   }
 }
