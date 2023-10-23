@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+  "actionButton_add_car": "Add car",
   "actionButton_journal": "Journal entry",
   "actionButton_odometer": "Odometer",
   "actionButton_waste": "Waste",

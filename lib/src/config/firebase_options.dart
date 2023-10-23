@@ -59,5 +59,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: dotenv.get('FIREBASE_MESSAGING_SENDER_ID'),
     projectId: dotenv.get('FIREBASE_PROJECT_ID'),
     storageBucket: dotenv.get('FIREBASE_STORAGE_BUCKET'),
+    databaseURL: dotenv.get('FIREBASE_DATABASE_URL'),
   );
 }

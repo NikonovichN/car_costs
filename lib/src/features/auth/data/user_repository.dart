@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/user_entity.dart';
+import 'user_remote_datasource.dart';
 
-final userRepositoryProvider =
-    Provider<UserRepository>((ref) => UserRepositoryImpl());
+final userRepositoryProvider = Provider<UserRepository>(UserRepositoryImpl.new);
 
 abstract class UserRepository {
   Future<UserEntity> logInViaEmailPassword(String email, String password);
@@ -14,8 +14,11 @@ abstract class UserRepository {
 
 class UserRepositoryImpl implements UserRepository {
   final FirebaseAuth _firebaseAuth;
+  final UserRemoteDataSource _userRemoteDataSource;
 
-  UserRepositoryImpl() : _firebaseAuth = FirebaseAuth.instance;
+  UserRepositoryImpl(Ref ref)
+      : _firebaseAuth = FirebaseAuth.instance,
+        _userRemoteDataSource = ref.read(userRemoteDataSourceProvider);
 
   @override
   Future<UserEntity> logInViaEmailPassword(
@@ -40,7 +43,10 @@ class UserRepositoryImpl implements UserRepository {
       password: password,
     );
 
-    return _parseCredentials(credentials);
+    final userEntity = _parseCredentials(credentials);
+    await _userRemoteDataSource.addUserToDataBase(userEntity.uid);
+
+    return userEntity;
   }
 
   @override
@@ -48,7 +54,7 @@ class UserRepositoryImpl implements UserRepository {
     await _firebaseAuth.signOut();
   }
 
-  _parseCredentials(UserCredential credentials) => UserEntity(
+  UserEntity _parseCredentials(UserCredential credentials) => UserEntity(
         uid: credentials.user!.uid,
         token: credentials.credential?.token,
         accessToken: credentials.credential?.accessToken,

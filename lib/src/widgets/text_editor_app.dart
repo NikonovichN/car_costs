@@ -5,14 +5,18 @@ import 'package:car_costs/src/theme/colors/colors_extensions.dart';
 
 class TextEditorApp extends StatefulWidget {
   final String? placeholder;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final bool obscureText;
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
 
   const TextEditorApp({
     super.key,
     this.placeholder,
-    required this.onChanged,
+    this.onChanged,
     this.obscureText = false,
+    this.keyboardType,
+    this.controller,
   });
 
   @override
@@ -41,7 +45,8 @@ class _TextEditorAppState extends State<TextEditorApp> {
     );
 
     return TextField(
-      controller: _controller,
+      controller: widget.controller ?? _controller,
+      keyboardType: widget.keyboardType,
       style: textStylesExt.openSansRegular,
       onChanged: widget.onChanged,
       obscureText: widget.obscureText,

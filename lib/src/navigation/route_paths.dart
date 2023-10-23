@@ -12,4 +12,5 @@ class RoutePaths {
   final expenses = 'expenses';
   final settings = 'settings';
   final garage = 'garage';
+  final addCar = 'add-car';
 }

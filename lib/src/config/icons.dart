@@ -11,4 +11,5 @@ class IconsPaths {
   final carSvg = 'assets/icons/car.svg';
   final odometerSvg = 'assets/icons/odometer.svg';
   final recycleSvg = 'assets/icons/recycle.svg';
+  final garageWithCarSvg = 'assets/icons/garage_with_car.svg';
 }
