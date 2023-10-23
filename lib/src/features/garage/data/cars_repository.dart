@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/cars_entity.dart';
+import 'package:car_costs/src/utils/errors.dart';
 import 'package:car_costs/src/config/providers.dart';
 import 'package:car_costs/src/config/firebase_database_paths.dart';
 import 'package:car_costs/src/managers/fire_data_base_manager.dart';
@@ -37,8 +38,12 @@ class CarsRepositoryImpl implements CarsRepository {
 
   @override
   Future<CarsEntity?> readAllCars(String userId) async {
-    final cars = await _fireDataBase.readValue(_dataBasePaths.cars(userId));
+    final data = await _fireDataBase.readValue(_dataBasePaths.cars(userId));
 
-    return CarsEntity.fromJson({"cars": cars});
+    if (data is! Map) {
+      throw const NoDataException();
+    }
+
+    return CarsEntity.fromJson({"cars": data});
   }
 }

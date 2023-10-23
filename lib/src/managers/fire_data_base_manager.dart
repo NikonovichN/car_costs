@@ -10,7 +10,7 @@ final fireDataBaseManagerProvider =
 abstract class FireDataBaseManager {
   Future<void> updateValue(List<String> path, Map<String, dynamic> jsonData);
   Future<void> deleteValue(List<String> path);
-  Future<Map> readValue(List<String> path);
+  Future<dynamic> readValue(List<String> path);
 }
 
 class FireDataBaseManagerImpl implements FireDataBaseManager {
@@ -33,11 +33,11 @@ class FireDataBaseManagerImpl implements FireDataBaseManager {
   }
 
   @override
-  Future<Map> readValue(List<String> path) async {
+  Future<dynamic> readValue(List<String> path) async {
     final snapshot = await _database.ref(path.join()).get();
 
     if (snapshot.exists) {
-      return snapshot.value! as Map;
+      return snapshot.value!;
     }
 
     throw const NoDataException();
